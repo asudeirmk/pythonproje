@@ -1,11 +1,18 @@
 import pandas as pd #pandas kütüphanesini ekledi 
+import numpy as np #numpy kütüphanesi 
+# numPy array işlemleri
+sayilar = np.array([10, 20, 30, 40, 50])
 
-veri = pd.read_csv("veri.csv") #okudu 
+print("\nNumPy array:")
+print(sayilar)
 
-# ekrana yazdır
+print("Array'in toplamı:", sayilar.sum())
+print("Array'in ortalaması:", sayilar.mean())
+veri = pd.read_csv("veri.csv")  
+
+
 print(veri)
 
-# Eksik verileri kontrol et
 print("\nEksik veriler:")
 print(veri.isnull().sum())
 
@@ -18,6 +25,11 @@ veri["Yaş"] = veri["Yaş"].fillna(veri["Yaş"].mean())
 
 print("\nTemizlenmiş veriler:")
 print(veri) 
+# DataFrame filtreleme
+yuksek_notlular = veri[veri["Not"] >= 80]
+
+print("\n80 ve üzeri not alan öğrenciler:")
+print(yuksek_notlular)
 
 import matplotlib.pyplot as plt
 import seaborn as sns
